@@ -1,0 +1,3 @@
+find . -name '*.coffee' | xargs coffee -cw &
+find . -name '*.sass' | xargs sass --watch
+wait
