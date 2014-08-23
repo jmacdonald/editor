@@ -1,4 +1,5 @@
 window.App = {}
 
 $(document).ready ->
-  new window.App.Editor
+  App.editor = new App.Editor
+  App.file_handler = new App.FileHandler

@@ -6,6 +6,9 @@ class window.App.Editor
         mode:  'ruby'
         theme: 'monokai'
         vimMode: true
+        extraKeys:
+          "'o'": (editor) ->
+            window.App.file_handler.open()
       }
     )
 
