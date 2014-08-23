@@ -1,0 +1,10 @@
+{
+  "name": "Editor",
+  "main": "editor.html",
+  "window": {
+    "title": "Editor",
+    "toolbar": false,
+    "width": 1280,
+    "height": 1024
+  }
+}
