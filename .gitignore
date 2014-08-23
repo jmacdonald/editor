@@ -3,3 +3,4 @@
 *.swp
 editor.nw
 bower_components/
+.sass-cache/
