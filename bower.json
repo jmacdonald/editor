@@ -1,0 +1,21 @@
+{
+  "name": "editor",
+  "main": "editor.js",
+  "version": "0.0.1",
+  "authors": [
+    "Jordan MacDonald <jordan@wastedintelligence.com>"
+  ],
+  "description": "VIM-inspired text editor.",
+  "license": "GPLv3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
