@@ -20,11 +20,13 @@
   </body>
 
   <script>
-    var gulp = require('gulp');
-    gulp.task('reload', function () {
-      if (location) location.reload();
-    });
+    if (typeof require === undefined) {
+      var gulp = require('gulp');
+      gulp.task('reload', function () {
+        if (location) location.reload();
+      });
 
-    gulp.watch('**/*', ['reload']);
+      gulp.watch('**/*', ['reload']);
+    }
   </script>
 </html>
