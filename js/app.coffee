@@ -1,5 +1,15 @@
-window.App = {}
+class window.App
+  constructor: ->
+    @editor = new App.Editor
+    @path_field = $('input#path')
+    @_set_up_path_field()
+
+  change_path: ->
+    @path_field.trigger 'click'
+
+  _set_up_path_field: ->
+    @path_field.change ->
+      @path = this.value
 
 $(document).ready ->
-  App.editor = new App.Editor
-  App.file_handler = new App.FileHandler
+  window.app = new App

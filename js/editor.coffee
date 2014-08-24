@@ -8,7 +8,7 @@ class window.App.Editor
         vimMode: true
         extraKeys:
           "'o'": (editor) ->
-            window.App.file_handler.open()
+            window.app.change_path()
       }
     )
 

@@ -9,7 +9,6 @@
     <script src="bower_components/jquery/dist/jquery.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/editor.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/file_handler.js" type="text/javascript" charset="utf-8"></script>
 
     <link href="bower_components/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="bower_components/codemirror/theme/monokai.css" rel="stylesheet" type="text/css" media="screen" />
@@ -17,7 +16,7 @@
   </head>
   <body>
     <div id="editor"></div>
-    <input id="open_file" type="file" />
+    <input id="path" type="file" class="hidden" nwdirectory />
   </body>
 
   <script>
