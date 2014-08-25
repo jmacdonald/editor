@@ -1,0 +1,24 @@
+fs = require 'fs'
+path = require 'path'
+
+class FileFinder
+  constructor: (@app) ->
+    @index = []
+
+  rebuild_index: ->
+    new_index = []
+    @_index_directory @app.path, new_index
+    @index = new_index
+
+  _index_directory: (directory_path, new_index) ->
+    # Find all of the entries in the directory.
+    entries = fs.readdirSync directory_path
+
+    for entry in entries
+      full_entry_path = "#{directory_path}/#{entry}"
+      if fs.lstatSync(full_entry_path).isDirectory()
+        @_index_directory full_entry_path, new_index
+      else
+        new_index.push full_entry_path[@app.path.length+1..]
+
+exports.FileFinder = FileFinder
