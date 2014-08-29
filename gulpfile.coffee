@@ -3,10 +3,33 @@ coffee = require 'gulp-coffee'
 sass = require 'gulp-sass'
 fs = require 'fs'
 path_lib = require 'path'
+process = require 'child_process'
+wd = require 'wd'
+
+# Declare a variable to keep
+# a reference to the browser.
+browser = null
 
 gulp.task 'default', ->
   coffee_path = 'js/*.coffee'
   sass_path = 'css/*.sass'
+
+  # Fire up the selenium server so we can
+  # control node-webkit remotely.
+  selenium = process.spawn 'java', [
+    '-jar'
+    'selenium-server-standalone-2.42.2.jar'
+    '-Dwebdriver.chrome.driver=./chromedriver'
+  ]
+
+  setTimeout ->
+    # Initialize a connection to the browser
+    # via selenium server using webdriver.
+    browser = wd.remote()
+
+    # Open a new node-webkit window.
+    browser.init { browserName: 'chrome' }
+  , 3000
 
   # Do an initial compile of all assets.
   compile_coffee coffee_path
@@ -14,6 +37,8 @@ gulp.task 'default', ->
 
   # Watch both directories for changes.
   gulp.watch coffee_path, (event) ->
+    refresh_app()
+
     if event.type == 'deleted'
       compiled_file = "#{event.path[..-7]}js"
 
@@ -23,6 +48,8 @@ gulp.task 'default', ->
       compile_coffee event.path
 
   gulp.watch sass_path, (event) ->
+    refresh_app()
+
     if event.type == 'deleted'
       compiled_file = "#{event.path[..-5]}css"
 
@@ -50,3 +77,8 @@ compile_sass = (path) ->
     .pipe gulp.dest path_lib.dirname path
 
   console.log "Compiling #{path}..."
+
+refresh_app = ->
+  # Refresh the browser.
+  browser.close()
+  browser.init { browserName: 'chrome' }
