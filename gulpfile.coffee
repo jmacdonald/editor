@@ -11,7 +11,7 @@ wd = require 'wd'
 browser = null
 
 gulp.task 'default', ->
-  coffee_path = 'js/*.coffee'
+  coffee_paths = ['js/*.coffee', 'node_modules/kitana/*.coffee']
   sass_path = 'css/*.sass'
 
   # Fire up the selenium server so we can
@@ -32,11 +32,11 @@ gulp.task 'default', ->
   , 3000
 
   # Do an initial compile of all assets.
-  compile_coffee coffee_path
+  compile_coffee coffee_paths
   compile_sass sass_path
 
   # Watch both directories for changes.
-  gulp.watch coffee_path, (event) ->
+  gulp.watch coffee_paths, (event) ->
     refresh_app()
 
     if event.type == 'deleted'
