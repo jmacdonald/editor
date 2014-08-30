@@ -1,6 +1,9 @@
-class window.App
+kitana = require 'kitana'
+
+class window.Kitana.App
   constructor: ->
-    @editor = new App.Editor
+    @editor = new Kitana.Editor
+    @workspace = new kitana.Workspace @, process.cwd()
     @path_field = $('input#path')
     @_set_up_path_field()
 
@@ -12,4 +15,4 @@ class window.App
       @path = this.value
 
 $(document).ready ->
-  window.app = new App
+  window.app = new Kitana.App

@@ -1,4 +1,4 @@
-class window.App.Editor
+class window.Kitana.Editor
   constructor: ->
     @cm = CodeMirror(
       $('#editor')[0],
