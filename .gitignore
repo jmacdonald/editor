@@ -1,5 +1,7 @@
 *.swp
-bower_components/
-build/
+bower_components
+node_modules/*
+!node_modules/kitana
+build
 *.js
 *.css
