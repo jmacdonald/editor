@@ -1,7 +1,6 @@
 kitana = require 'kitana'
-{EventEmitter} = require 'events'
 
-class window.Kitana.App extends EventEmitter
+class window.Kitana.App
   constructor: ->
     @editor = new Kitana.Editor
     @workspace = new kitana.Workspace @, process.cwd()
@@ -14,10 +13,7 @@ class window.Kitana.App extends EventEmitter
 
   _set_up_path_field: ->
     @path_field.change ->
-      @path = this.value
-
-      # Let any subscribers know that this value has changed.
-      @.emit 'kitana.app.path_changed'
+      @workspace.set_path this.value
 
 $(document).ready ->
   window.app = new Kitana.App
